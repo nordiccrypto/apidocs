@@ -1,12 +1,12 @@
 <p align="center">
-  <img src="" alt="Crypto Signals" width="226">
+  <img src="https://nordiccrypto.com/wp-content/uploads/2018/04/Hori-light-crop.png" alt="Crypto Signals" width="226">
   <br>
   </a>
 </p>
 
 <p align="center">Nordic Crypto helps you trade intelligent</p>
 
-<p align="center"><img src="https://nordiccrypto.com/wp-content/uploads/2018/04/Hori-light-crop.png" width=700 alt="Screenshot of Example Documentation created with Slate"></p>
+<p align="center"><img src="https://nordiccrypto.com/wp-content/uploads/2018/04/Charlottenlund-Slot-i-NC-blue.png" width=700 alt="Screenshot of Example Documentation created with Slate"></p>
 
 <p align="center"><em>The example above was created with Slate. Check it out at <a href="https://lord.github.io/slate">lord.github.io/slate</a>.</em></p>
 
