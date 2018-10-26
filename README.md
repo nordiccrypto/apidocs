@@ -29,7 +29,7 @@ You're going to need:
 1. Fork this repository on GitHub.
 2. Clone *your forked repository* (not our original one) to your hard drive with `git clone https://github.com/YOURUSERNAME/apidocs.git`
 
-Companies Using Slate
+Companies Using Nordic Crypto
 ---------------------------------
 
 * [...](https://docs...com/)
