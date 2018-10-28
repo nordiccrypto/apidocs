@@ -59,19 +59,18 @@ You must replace <code>meowmeowmeow</code> with your personal API key.
 
 # Signals
 
-## Get All Signals from an exchange
-
+## Get Signals
 
 ```python
-import kittn
+import requests
+r = requests.get('https://app.nordiccrypto.com/api/v1.0/buysell', auth=('meowmeowmeow', ''))
+print(r.json())
 
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get()
 ```
 
 ```shell
-curl "http://example.com/api/kittens"
-  -H "Authorization: meowmeowmeow"
+curl "https://app.nordiccrypto.com/api/v1.0/buysell"
+  -u meowmeowmeow:
 ```
 
 ```javascript
@@ -85,39 +84,35 @@ let kittens = api.kittens.get();
 
 ```json
 [
-  {
-    "id": 1,
-    "name": "Fluffums",
-    "breed": "calico",
-    "fluffiness": 6,
-    "cuteness": 7
-  },
-  {
-    "id": 2,
-    "name": "Max",
-    "breed": "unknown",
-    "fluffiness": 5,
-    "cuteness": 10
+  { 
+    "Coin": "ETH_OMG", 
+    "pl_entry": 0.01617, 
+    "pl_exit": 0.0, 
+    "start": "2018-10-27", 
+    "end": "2018-10-28"
   }
 ]
 ```
 
-This endpoint retrieves all kittens.
+This endpoint retrieves all signals from subscribed instruments. 
+You can poll this every minute for testing purposes, although this is a daily signal.
 
 ### HTTP Request
 
-`GET http://example.com/api/kittens`
+`GET https://app.nordiccrypto.com/api/v1.0/buysell`
 
 ### Query Parameters
 
 Parameter | Default | Description
 --------- | ------- | -----------
-include_cats | false | If set to true, the result will also include cats.
-available | true | If set to false, the result will include kittens that have already been adopted.
+coin | None | If not set the result will include all coins subscribed. 
+
 
 <aside class="success">
-Remember — a happy kitten is an authenticated kitten!
+Set coin=USD_BTC returns the BTC rate in USD.
 </aside>
+
+# Trades
 
 ## Get a trade recommendation
 
