@@ -72,6 +72,7 @@ parse_args() {
   append_hash=${GIT_DEPLOY_APPEND_HASH:-true}
 }
 
+
 main() {
   parse_args "$@"
 
@@ -123,6 +124,7 @@ main() {
   fi
 
   restore_head
+
 }
 
 initial_deploy() {

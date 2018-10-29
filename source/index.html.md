@@ -61,7 +61,7 @@ You must replace <code>meowmeowmeow</code> with your personal API key.
 
 ```python
 import requests
-r = requests.get('https://app.nordiccrypto.com/api/v1.0/signals', auth=('meowmeowmeow', ''))
+r = requests.get('https://app.nordiccrypto.com/api/v1.0/signals', headers={'Authorization':'meowmeowmeow'})
 print(r.json())
 
 ```
@@ -106,7 +106,7 @@ You can poll this every minute for testing purposes, although this is a daily si
 
 ### HTTP Request
 
-`GET https://app.nordiccrypto.com/api/v1.0/buysell`
+`GET https://app.nordiccrypto.com/api/v1.0/signals`
 
 ### Query Parameters
 
@@ -126,7 +126,58 @@ Set coin=USD_BTC returns the BTC rate in USD.
 
 ```python
 import requests
-r = requests.get('https://app.nordiccrypto.com/api/v1.0/crash', auth=('meowmeowmeow', ''))
+r = requests.get('https://app.nordiccrypto.com/api/v1.0/crashalert', headers={'Authorization':'meowmeowmeow'})
+print(r.json())
+```
+
+```shell
+curl "https://app.nordiccrypto.com/api/v1.0/crashalert"
+  -H "Authorization: meowmeowmeow"
+```
+
+```javascript
+TBD
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "id": 2,
+  "name": "Max",
+  "breed": "unknown",
+  "fluffiness": 5,
+  "cuteness": 10
+}
+```
+
+This endpoint retrieves a specific kitten.
+
+<aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
+
+### HTTP Request
+
+`GET https://app.nordiccrypto.com/api/v1.0/crashalert<ID>`
+
+### URL Parameters
+
+Parameter   | Default | Description
+----------- | ------- | -----------
+coin        | None    | If not set the result will include all coins subscribed. 
+start       | datetime| E.g. 2018-10-31
+end         | datetime| E.g. 2018-12-24
+
+
+
+
+# Trades
+
+## Get a trade recommendation
+
+```python
+import requests
+
+r = requests.get('https://app.nordiccrypto.com/api/v1.0/trades', headers={'Authorization':'meowmeowmeow'})
 print(r.json())
 ```
 
@@ -160,64 +211,14 @@ This endpoint retrieves a specific kitten.
 
 ### HTTP Request
 
-`GET http://example.com/kittens/<ID>`
+`GET https://app.nordiccrypto.com/api/v1.0/trades<ID>`
 
 ### URL Parameters
 
-Parameter | Description
---------- | -----------
-ID | The ID of the kitten to retrieve
-
-
-
-
-# Trades
-
-## Get a trade recommendation
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get(2)
-```
-
-```shell
-curl "http://example.com/api/kittens/2"
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let max = api.kittens.get(2);
-```
-
-> The above command returns JSON structured like this:
-
-```json
-{
-  "id": 2,
-  "name": "Max",
-  "breed": "unknown",
-  "fluffiness": 5,
-  "cuteness": 10
-}
-```
-
-This endpoint retrieves a specific kitten.
-
-<aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
-
-### HTTP Request
-
-`GET http://example.com/kittens/<ID>`
-
-### URL Parameters
-
-Parameter | Description
---------- | -----------
-ID | The ID of the kitten to retrieve
+Parameter   | Default | Description
+----------- | ------- | -----------
+coin        | None    | If not set the result will include all coins subscribed. 
+start       | datetime| E.g. 2018-10-31
+end         | datetime| E.g. 2018-12-24
 
 
