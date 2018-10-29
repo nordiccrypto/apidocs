@@ -311,7 +311,7 @@ You must replace <code>meowmeowmeow</code> with your personal API key.
 <p>This endpoint retrieves all signals from subscribed instruments. 
 You can poll this every minute for testing purposes, although this is a daily signal.</p>
 <h3 id='http-request'>HTTP Request</h3>
-<p><code>GET http://example.com/api/kittens</code></p>
+<p><code>GET https://app.nordiccrypto.com/api/v1.0/buysell</code></p>
 <h3 id='query-parameters'>Query Parameters</h3>
 <table><thead>
 <tr>
@@ -321,19 +321,14 @@ You can poll this every minute for testing purposes, although this is a daily si
 </tr>
 </thead><tbody>
 <tr>
-<td>include_cats</td>
-<td>false</td>
-<td>If set to true, the result will also include cats.</td>
-</tr>
-<tr>
-<td>available</td>
-<td>true</td>
-<td>If set to false, the result will include kittens that have already been adopted.</td>
+<td>coin</td>
+<td>None</td>
+<td>If not set the result will include all coins subscribed.</td>
 </tr>
 </tbody></table>
 
 <aside class="success">
-Remember — a happy kitten is an authenticated kitten!
+Set coin=USD_BTC returns the BTC rate in USD.
 </aside>
 <h1 id='trades'>Trades</h1><h2 id='get-a-trade-recommendation'>Get a trade recommendation</h2><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
 

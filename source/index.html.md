@@ -24,13 +24,13 @@ We have language bindings in Shell, Python, and JavaScript! You can view code ex
 
 # Authentication
 
-> To authorize, use this code:
+> To authorize, use this code when you request an api endpoint:
 
 
 ```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
+  import requests
+  headers = {"Authorization" : "meowmeowmeow"}
+  r = requests.get('http://api_endpoint_here', headers=headers)
 ```
 
 ```shell
@@ -40,9 +40,7 @@ curl "api_endpoint_here"
 ```
 
 ```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
+TBD
 ```
 
 > Make sure to replace `meowmeowmeow` with your API key.
@@ -63,21 +61,18 @@ You must replace <code>meowmeowmeow</code> with your personal API key.
 
 ```python
 import requests
-r = requests.get('https://app.nordiccrypto.com/api/v1.0/buysell', auth=('meowmeowmeow', ''))
+r = requests.get('https://app.nordiccrypto.com/api/v1.0/signals', auth=('meowmeowmeow', ''))
 print(r.json())
 
 ```
 
 ```shell
-curl "https://app.nordiccrypto.com/api/v1.0/buysell"
-  -u meowmeowmeow:
+curl "https://app.nordiccrypto.com/api/v1.0/signals"
+  -H "Authorization: meowmeowmeow"
 ```
 
 ```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let kittens = api.kittens.get();
+TBD
 ```
 
 > The above command returns JSON structured like this:
@@ -86,11 +81,23 @@ let kittens = api.kittens.get();
 [
   { 
     "Coin": "ETH_OMG", 
-    "pl_entry": 0.01617, 
-    "pl_exit": 0.0, 
-    "start": "2018-10-27", 
-    "end": "2018-10-28"
+    "entry": 0.01617, 
+    "exit": 0.0, 
+    "opened": "2018-10-19", 
+    "closed": "OPEN", 
+    "pnl": 0.012, 
+    "signal": "LONG"
+  },
+  { 
+    "Coin": "ETH_OMG", 
+    "entry": 0.01509, 
+    "exit": 0.01573, 
+    "opened": "2018-08-28", 
+    "closed": "2018-09-15", 
+    "pnl": 4.24, 
+    "signal": "LONG"
   }
+
 ]
 ```
 
@@ -103,14 +110,66 @@ You can poll this every minute for testing purposes, although this is a daily si
 
 ### Query Parameters
 
-Parameter | Default | Description
---------- | ------- | -----------
-coin | None | If not set the result will include all coins subscribed. 
-
+Parameter   | Default | Description
+----------- | ------- | -----------
+coin        | None    | If not set the result will include all coins subscribed. 
+start       | datetime| E.g. 2018-10-31
+end         | datetime| E.g. 2018-12-24
 
 <aside class="success">
 Set coin=USD_BTC returns the BTC rate in USD.
 </aside>
+
+# Crash Alert
+
+## Get crash alerts
+
+```python
+import requests
+r = requests.get('https://app.nordiccrypto.com/api/v1.0/crash', auth=('meowmeowmeow', ''))
+print(r.json())
+```
+
+```shell
+curl "http://example.com/api/kittens/2"
+  -H "Authorization: meowmeowmeow"
+```
+
+```javascript
+const kittn = require('kittn');
+
+let api = kittn.authorize('meowmeowmeow');
+let max = api.kittens.get(2);
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "id": 2,
+  "name": "Max",
+  "breed": "unknown",
+  "fluffiness": 5,
+  "cuteness": 10
+}
+```
+
+This endpoint retrieves a specific kitten.
+
+<aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
+
+### HTTP Request
+
+`GET http://example.com/kittens/<ID>`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+ID | The ID of the kitten to retrieve
+
+
+
 
 # Trades
 
