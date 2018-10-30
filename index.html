@@ -324,7 +324,7 @@ You must replace <code>meowmeowmeow</code> with your personal API key.
 
 </span><span class="p">]</span><span class="w">
 </span></code></pre>
-<p>This endpoint retrieves all coins subscribed.</p>
+<p>This endpoint retrieves all coins supported.</p>
 <h3 id='http-request'>HTTP Request</h3>
 <p><code>GET https://app.nordiccrypto.com/api/v1.0/coins</code></p>
 <h3 id='query-parameters'>Query Parameters</h3>
@@ -336,29 +336,19 @@ You must replace <code>meowmeowmeow</code> with your personal API key.
 </tr>
 </thead><tbody>
 <tr>
-<td>base</td>
-<td>None</td>
-<td>Set base to select a coin. E.g. BTC to select BTC/quote</td>
-</tr>
-<tr>
-<td>quote</td>
+<td>market</td>
 <td>USD</td>
-<td>You can set this to USD, BTC, ETH, USDT. If not set the result will include all coins subscribed.</td>
+<td>Use BTC to get all BTC_XXX. Supported markets are: BTC, USDT, USD, ETH</td>
 </tr>
 <tr>
-<td>start</td>
-<td>datetime</td>
-<td>E.g. 2018-10-31</td>
-</tr>
-<tr>
-<td>end</td>
-<td>datetime</td>
-<td>E.g. 2018-12-24</td>
+<td>pair</td>
+<td>None</td>
+<td>Set pair. E.g. USD_BTC</td>
 </tr>
 </tbody></table>
 
 <aside class="success">
-Set coin=USD_BTC returns the BTC rate in USD.
+Set pair=USD_BTC returns the BTC rate in USD.
 </aside>
 <h1 id='signals'>Signals</h1><h2 id='get-signals'>Get Signals</h2><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
 <span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">'https://app.nordiccrypto.com/api/v1.0/signals'</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="p">{</span><span class="s">'Authorization'</span><span class="p">:</span><span class="s">'meowmeowmeow'</span><span class="p">})</span>
@@ -462,9 +452,14 @@ Set pair=BTC_USD returns the BTC rate in USD.
 </tr>
 </thead><tbody>
 <tr>
-<td>quote</td>
+<td>market</td>
+<td>USD</td>
+<td>Options are XXX = ETH, USDT, BTC for XXX_YYY where Y = coin tickers.</td>
+</tr>
+<tr>
+<td>ticker</td>
 <td>None</td>
-<td>If not set the result will include all coins subscribed. E.g. set to USD to get all xxx/USD pairs only.</td>
+<td>Specify a coin ticker to get crash alert from. E.g. BTC</td>
 </tr>
 <tr>
 <td>start</td>
@@ -479,31 +474,24 @@ Set pair=BTC_USD returns the BTC rate in USD.
 </tbody></table>
 <h1 id='trades'>Trades</h1><h2 id='get-a-trade-recommendation'>Get a trade recommendation</h2><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
 
-<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">'https://app.nordiccrypto.com/api/v1.0/trades'</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="p">{</span><span class="s">'Authorization'</span><span class="p">:</span><span class="s">'meowmeowmeow'</span><span class="p">})</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">'https://app.nordiccrypto.com/api/v1.0/get_trades'</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="p">{</span><span class="s">'Authorization'</span><span class="p">:</span><span class="s">'meowmeowmeow'</span><span class="p">})</span>
 <span class="k">print</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">())</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/kittens/2"</span>
+</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/v1.0/get_trades"</span>
   -H <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'kittn'</span><span class="p">);</span>
-
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">);</span>
-<span class="kd">let</span> <span class="nx">max</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">kittens</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="nx">TBD</span>
 </code></pre>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Max"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
+
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<p>This endpoint retrieves a specific kitten.</p>
+<p>This endpoint retrieves all trade recommendations currently open.</p>
 
 <aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
 <h3 id='http-request-4'>HTTP Request</h3>
-<p><code>GET https://app.nordiccrypto.com/api/v1.0/trades&lt;ID&gt;</code></p>
+<p><code>GET https://app.nordiccrypto.com/api/v1.0/get_trades&lt;ID&gt;</code></p>
 <h3 id='url-parameters-2'>URL Parameters</h3>
 <table><thead>
 <tr>
@@ -513,7 +501,7 @@ Set pair=BTC_USD returns the BTC rate in USD.
 </tr>
 </thead><tbody>
 <tr>
-<td>coin</td>
+<td>pair</td>
 <td>None</td>
 <td>If not set the result will include all coins subscribed.</td>
 </tr>
