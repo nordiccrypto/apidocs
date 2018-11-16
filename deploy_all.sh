@@ -10,4 +10,5 @@ update_git_server() {
 
 ./deploy.sh
 update_git_server
-
+rm -rf /Applications/XAMPP/htdocs/apidocs
+cp -rf /Users/bohenriksen/develop/apidocs/build /Applications/XAMPP/htdocs/apidocs
