@@ -439,9 +439,9 @@ You can poll this every minute for testing purposes, although this is a daily si
 </tr>
 </tbody></table>
 
-<aside class="success">
+<!--<aside class="success">
 Set pair=BTC_USD returns the BTC rate in USD.
-</aside>
+</aside>-->
 <h1 id='alpha-2-signals'>Alpha 2 Signals</h1><h2 id='get-signals-2'>Get Signals</h2><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
 <span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">'https://app.nordiccrypto.com/api/v1.0/alpha2/signals'</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="p">{</span><span class="s">'Authorization'</span><span class="p">:</span><span class="s">'meowmeowmeow'</span><span class="p">})</span>
 <span class="k">print</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">())</span>
@@ -520,9 +520,9 @@ You can poll this every minute for testing purposes, although this is a daily si
 </tr>
 </tbody></table>
 
-<aside class="success">
+<!--<aside class="success">
 Set pair=BTC_USD returns the BTC rate in USD.
-</aside>
+</aside>-->
 <h1 id='alpha-3-trades'>Alpha 3 Trades</h1><h2 id='get-a-trade-recommendation'>Get a trade recommendation.</h2><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
 
 <span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">'https://app.nordiccrypto.com/api/v1.0/alpha3/get_trades'</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="p">{</span><span class="s">'Authorization'</span><span class="p">:</span><span class="s">'meowmeowmeow'</span><span class="p">})</span>
