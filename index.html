@@ -243,10 +243,10 @@
               </ul>
           </li>
           <li>
-            <a href="#crash-alert" class="toc-h1 toc-link" data-title="Crash Alert">Crash Alert</a>
+            <a href="#alpha-2-signals" class="toc-h1 toc-link" data-title="Alpha 2 Signals">Alpha 2 Signals</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#get-crash-alerts" class="toc-h2 toc-link" data-title="Get crash alerts">Get crash alerts</a>
+                    <a href="#get-signals-2" class="toc-h2 toc-link" data-title="Get Signals">Get Signals</a>
                   </li>
               </ul>
           </li>
@@ -258,6 +258,14 @@
                   </li>
                   <li>
                     <a href="#get-a-pair-stats" class="toc-h2 toc-link" data-title="Get a pair stats">Get a pair stats</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#crash-alert" class="toc-h1 toc-link" data-title="Crash Alert">Crash Alert</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#get-crash-alerts" class="toc-h2 toc-link" data-title="Get crash alerts">Get crash alerts</a>
                   </li>
               </ul>
           </li>
@@ -357,7 +365,7 @@ Set pair=USD_BTC returns the BTC rate in USD.
 <span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">'https://app.nordiccrypto.com/api/v1.0/alpha1/signals'</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="p">{</span><span class="s">'Authorization'</span><span class="p">:</span><span class="s">'meowmeowmeow'</span><span class="p">})</span>
 <span class="k">print</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">())</span>
 
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://app.nordiccrypto.com/api/alpha1/v1.0/alpha1/signals"</span>
+</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://app.nordiccrypto.com/api/v1.0/alpha1/signals"</span>
   -H <span class="s2">"Authorization: meowmeowmeow"</span>
 </code></pre><pre class="highlight javascript tab-javascript"><code><span class="nx">TBD</span>
 </code></pre>
@@ -365,34 +373,42 @@ Set pair=USD_BTC returns the BTC rate in USD.
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
-  </span><span class="p">{</span><span class="w"> 
-    </span><span class="s2">"pair"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETH_OMG"</span><span class="p">,</span><span class="w"> 
-    </span><span class="s2">"entry"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.01617</span><span class="p">,</span><span class="w"> 
-    </span><span class="s2">"current_stop_loss"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mf">0.015</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"opened"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-10-19"</span><span class="p">,</span><span class="w"> 
-    </span><span class="s2">"closed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OPEN"</span><span class="p">,</span><span class="w"> 
-    </span><span class="s2">"pnl"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.012</span><span class="p">,</span><span class="w"> 
-    </span><span class="s2">"signal"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LONG"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"exchange_name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Bitmart"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"There is a &lt;LONG&gt; signal...."</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="p">{</span><span class="w"> 
-    </span><span class="s2">"pair"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETH_OMG"</span><span class="p">,</span><span class="w"> 
-    </span><span class="s2">"entry"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.01509</span><span class="p">,</span><span class="w"> 
-    </span><span class="s2">"exit"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.01573</span><span class="p">,</span><span class="w"> 
-    </span><span class="s2">"opened"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-08-28"</span><span class="p">,</span><span class="w"> 
-    </span><span class="s2">"closed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-09-15"</span><span class="p">,</span><span class="w"> 
-    </span><span class="s2">"pnl"</span><span class="p">:</span><span class="w"> </span><span class="mf">4.24</span><span class="p">,</span><span class="w"> 
-    </span><span class="s2">"signal"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LONG"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"exchange_name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"Bitmart"</span><span class="w">
-  </span><span class="p">}</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"coin_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bitcoin"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"buy_or_sell"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SELL"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"ticker"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"market"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"entry_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-07-17 00:00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"entry"</span><span class="p">:</span><span class="w"> </span><span class="mf">7321.04</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"exit_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-08-04 00:00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"exit"</span><span class="p">:</span><span class="w"> </span><span class="mf">7032.85</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"pnl"</span><span class="p">:</span><span class="w"> </span><span class="mf">-0.0394</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"is_open"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"signal"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LONG"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"exchange"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Aggregated"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"coin_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bitcoin"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"buy_or_sell"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BUY"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"ticker"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"market"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"entry_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-07-17 00:00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"entry"</span><span class="p">:</span><span class="w"> </span><span class="mf">7321.04</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"closed_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-08-04 00:00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"exit"</span><span class="p">:</span><span class="w"> </span><span class="mf">7032.85</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"is_open"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"signal"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LONG"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"exchange"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Aggregated"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+    </span><span class="p">}</span><span class="w">
 
 </span><span class="p">]</span><span class="w">
 </span></code></pre>
 <p>This endpoint retrieves all signals from subscribed instruments. 
 You can poll this every minute for testing purposes, although this is a daily signal.</p>
 <h3 id='http-request-2'>HTTP Request</h3>
-<p><code>GET https://app.nordiccrypto.com/api/alpha1/v1.0/signals</code></p>
+<p><code>GET https://app.nordiccrypto.com/api/v1.0/alpha1/signals</code></p>
 <h3 id='query-parameters-2'>Query Parameters</h3>
 <table><thead>
 <tr>
@@ -426,35 +442,55 @@ You can poll this every minute for testing purposes, although this is a daily si
 <aside class="success">
 Set pair=BTC_USD returns the BTC rate in USD.
 </aside>
-<h1 id='crash-alert'>Crash Alert</h1><h2 id='get-crash-alerts'>Get crash alerts</h2><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
-<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">'https://app.nordiccrypto.com/api/v1.0/crashalert'</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="p">{</span><span class="s">'Authorization'</span><span class="p">:</span><span class="s">'meowmeowmeow'</span><span class="p">})</span>
+<h1 id='alpha-2-signals'>Alpha 2 Signals</h1><h2 id='get-signals-2'>Get Signals</h2><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">'https://app.nordiccrypto.com/api/v1.0/alpha2/signals'</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="p">{</span><span class="s">'Authorization'</span><span class="p">:</span><span class="s">'meowmeowmeow'</span><span class="p">})</span>
 <span class="k">print</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">())</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://app.nordiccrypto.com/api/v1.0/crashalert"</span>
+
+</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://app.nordiccrypto.com/api/v1.0/alpha2/signals"</span>
   -H <span class="s2">"Authorization: meowmeowmeow"</span>
 </code></pre><pre class="highlight javascript tab-javascript"><code><span class="nx">TBD</span>
 </code></pre>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w"> 
-  </span><span class="s2">"coin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bitcoin"</span><span class="p">,</span><span class="w"> 
-  </span><span class="s2">"pair"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"USD_BTC"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"crash_alert"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-09-08"</span><span class="p">,</span><span class="w"> 
-  </span><span class="s2">"open"</span><span class="p">:</span><span class="w"> </span><span class="mf">4605.16</span><span class="p">,</span><span class="w"> 
-  </span><span class="s2">"high"</span><span class="p">:</span><span class="w"> </span><span class="mf">4661.0</span><span class="p">,</span><span class="w"> 
-  </span><span class="s2">"low"</span><span class="p">:</span><span class="w"> </span><span class="mf">4075.18</span><span class="p">,</span><span class="w"> 
-  </span><span class="s2">"close"</span><span class="p">:</span><span class="w"> </span><span class="mf">4228.75</span><span class="p">,</span><span class="w"> 
-  </span><span class="s2">"volume"</span><span class="p">:</span><span class="w"> </span><span class="mi">2700890000</span><span class="p">,</span><span class="w"> 
-  </span><span class="s2">"market_cap"</span><span class="p">:</span><span class="w"> </span><span class="mi">76220200000</span><span class="w">
-</span><span class="p">}</span><span class="w">
+<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"coin_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bitcoin"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"buy_or_sell"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SELL"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"ticker"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"market"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"entry_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-07-17 00:00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"entry"</span><span class="p">:</span><span class="w"> </span><span class="mf">7321.04</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"exit_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-08-04 00:00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"exit"</span><span class="p">:</span><span class="w"> </span><span class="mf">7032.85</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"pnl"</span><span class="p">:</span><span class="w"> </span><span class="mf">-0.0394</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"is_open"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"signal"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LONG"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"exchange"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Aggregated"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"coin_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bitcoin"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"buy_or_sell"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BUY"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"ticker"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"market"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"entry_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-07-17 00:00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"entry"</span><span class="p">:</span><span class="w"> </span><span class="mf">7321.04</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"closed_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-08-04 00:00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"exit"</span><span class="p">:</span><span class="w"> </span><span class="mf">7032.85</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"is_open"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"signal"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LONG"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"exchange"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Aggregated"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+    </span><span class="p">}</span><span class="w">
 
+</span><span class="p">]</span><span class="w">
 </span></code></pre>
-<p>This endpoint retrieves all crash alerts on coins subscribed.</p>
-
-<!--<aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>-->
+<p>This endpoint retrieves all signals from subscribed instruments. 
+You can poll this every minute for testing purposes, although this is a daily signal.</p>
 <h3 id='http-request-3'>HTTP Request</h3>
-<p><code>GET https://app.nordiccrypto.com/api/v1.0/crashalert&lt;ID&gt;</code></p>
-<h3 id='url-parameters'>URL Parameters</h3>
+<p><code>GET https://app.nordiccrypto.com/api/alpha2/v1.0/signals</code></p>
+<h3 id='query-parameters-3'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -483,6 +519,10 @@ Set pair=BTC_USD returns the BTC rate in USD.
 <td>E.g. 2018-12-24</td>
 </tr>
 </tbody></table>
+
+<aside class="success">
+Set pair=BTC_USD returns the BTC rate in USD.
+</aside>
 <h1 id='alpha-3-trades'>Alpha 3 Trades</h1><h2 id='get-a-trade-recommendation'>Get a trade recommendation.</h2><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
 
 <span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">'https://app.nordiccrypto.com/api/v1.0/alpha3/get_trades'</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="p">{</span><span class="s">'Authorization'</span><span class="p">:</span><span class="s">'meowmeowmeow'</span><span class="p">})</span>
@@ -495,15 +535,32 @@ Set pair=BTC_USD returns the BTC rate in USD.
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"coin_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ethereum"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"ticker"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETH"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"market"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"entry_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-11-01 23:00:00"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"entry"</span><span class="p">:</span><span class="w"> </span><span class="mf">198.07</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"target"</span><span class="p">:</span><span class="w"> </span><span class="mf">198.997</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"stop"</span><span class="p">:</span><span class="w"> </span><span class="mf">197.28</span><span class="w">
-  </span><span class="p">}</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"coin_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Dash"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"buy_or_sell"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BUY"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"ticker"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DASH"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"market"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"entry_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-12-09 19:00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"entry"</span><span class="p">:</span><span class="w"> </span><span class="mf">75.51</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"target"</span><span class="p">:</span><span class="w"> </span><span class="mf">78.921</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"stop"</span><span class="p">:</span><span class="w"> </span><span class="mf">69.74</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"signal"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LONG"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"exchange"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Aggregated"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"'Dash' had a signal to buy at: 75.51, with a target exit of: 78.921 and a stop loss of 69.74"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"coin_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ethereum"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"buy_or_sell"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BUY"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"ticker"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ETH"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"market"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"entry_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-12-09 19:00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"entry"</span><span class="p">:</span><span class="w"> </span><span class="mf">97.91</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"target"</span><span class="p">:</span><span class="w"> </span><span class="mf">102.112</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"stop"</span><span class="p">:</span><span class="w"> </span><span class="mf">91.03</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"signal"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LONG"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"exchange"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Aggregated"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"'Ethereum' had a signal to buy at: 97.91, with a target exit of: 102.112 and a stop loss of 91.03"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
 </span><span class="p">]</span><span class="w">
 </span></code></pre>
 <p>This endpoint retrieves all trade recommendations currently open.</p>
@@ -511,7 +568,7 @@ Set pair=BTC_USD returns the BTC rate in USD.
 <!--<aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>-->
 <h3 id='http-request-4'>HTTP Request</h3>
 <p><code>GET https://app.nordiccrypto.com/api/v1.0/alpha3/get_trades</code></p>
-<h3 id='url-parameters-2'>URL Parameters</h3>
+<h3 id='url-parameters'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -552,18 +609,18 @@ Set pair=BTC_USD returns the BTC rate in USD.
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"Signal"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LONG"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"ticker"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"market"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"pnl"</span><span class="p">:</span><span class="w"> </span><span class="mf">1.524</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"avg_loss"</span><span class="p">:</span><span class="w"> </span><span class="mf">-0.0169</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"avg_win"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0217</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"max_dd"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"winner_ratio"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.6</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"risk2reward"</span><span class="p">:</span><span class="w"> </span><span class="mf">1.28</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"total_trades"</span><span class="p">:</span><span class="w"> </span><span class="mi">243</span><span class="w">
-  </span><span class="p">}</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"Signal"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LONG"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"ticker"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"market"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"pnl"</span><span class="p">:</span><span class="w"> </span><span class="mf">1.412</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"avg_loss"</span><span class="p">:</span><span class="w"> </span><span class="mf">-0.0073</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"avg_win"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0128</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"max_dd"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"winner_ratio"</span><span class="p">:</span><span class="w"> </span><span class="mf">1.0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"risk2reward"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.02</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"total_trades"</span><span class="p">:</span><span class="w"> </span><span class="mi">255</span><span class="w">
+    </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
 
 </span></code></pre>
@@ -572,6 +629,78 @@ Set pair=BTC_USD returns the BTC rate in USD.
 <!--<aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>-->
 <h3 id='http-request-5'>HTTP Request</h3>
 <p><code>GET https://app.nordiccrypto.com/api/v1.0/alpha3/get_stats</code></p>
+<h3 id='url-parameters-2'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>market</td>
+<td>USD</td>
+<td>Options are XXX = ETH, USDT, BTC for XXX_YYY where Y = coin tickers.</td>
+</tr>
+<tr>
+<td>ticker</td>
+<td>None</td>
+<td>Specify a coin ticker to get crash alert from. E.g. BTC</td>
+</tr>
+<tr>
+<td>start</td>
+<td>datetime</td>
+<td>E.g. 2018-10-31</td>
+</tr>
+<tr>
+<td>end</td>
+<td>datetime</td>
+<td>E.g. 2018-12-24</td>
+</tr>
+</tbody></table>
+<h1 id='crash-alert'>Crash Alert</h1><h2 id='get-crash-alerts'>Get crash alerts</h2><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">'https://app.nordiccrypto.com/api/v1.0/crashalert'</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="p">{</span><span class="s">'Authorization'</span><span class="p">:</span><span class="s">'meowmeowmeow'</span><span class="p">})</span>
+<span class="k">print</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">())</span>
+</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://app.nordiccrypto.com/api/v1.0/crashalert"</span>
+  -H <span class="s2">"Authorization: meowmeowmeow"</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="nx">TBD</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="w">  </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"coin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bitcoin"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"ticker"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"market"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"crash_alert"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-09-05"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"open"</span><span class="p">:</span><span class="w"> </span><span class="mf">7369.89</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"high"</span><span class="p">:</span><span class="w"> </span><span class="mf">7401.43</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"low"</span><span class="p">:</span><span class="w"> </span><span class="mf">6884.79</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"close"</span><span class="p">:</span><span class="w"> </span><span class="mf">6898.1</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"volumeto"</span><span class="p">:</span><span class="w"> </span><span class="mi">711989568</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"market_cap"</span><span class="p">:</span><span class="w"> </span><span class="mi">117185657641</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"coin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bitcoin"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"ticker"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"market"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"crash_alert"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-09-08"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"open"</span><span class="p">:</span><span class="w"> </span><span class="mf">4605.16</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"high"</span><span class="p">:</span><span class="w"> </span><span class="mf">4661.0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"low"</span><span class="p">:</span><span class="w"> </span><span class="mf">4075.18</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"close"</span><span class="p">:</span><span class="w"> </span><span class="mf">4228.75</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"volumeto"</span><span class="p">:</span><span class="w"> </span><span class="mi">2700890000</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"market_cap"</span><span class="p">:</span><span class="w"> </span><span class="mi">69999555938</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+
+</span></code></pre>
+<p>This endpoint retrieves all crash alerts on coins subscribed.</p>
+
+<!--<aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>-->
+<h3 id='http-request-6'>HTTP Request</h3>
+<p><code>GET https://app.nordiccrypto.com/api/v1.0/crashalert&lt;ID&gt;</code></p>
 <h3 id='url-parameters-3'>URL Parameters</h3>
 <table><thead>
 <tr>
