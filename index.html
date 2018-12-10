@@ -358,9 +358,9 @@ You must replace <code>meowmeowmeow</code> with your personal API key.
 </tr>
 </tbody></table>
 
-<aside class="success">
+<!--<aside class="success">
 Set pair=USD_BTC returns the BTC rate in USD.
-</aside>
+</aside>-->
 <h1 id='alpha-1-signals'>Alpha 1 Signals</h1><h2 id='get-signals'>Get Signals</h2><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
 <span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">'https://app.nordiccrypto.com/api/v1.0/alpha1/signals'</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="p">{</span><span class="s">'Authorization'</span><span class="p">:</span><span class="s">'meowmeowmeow'</span><span class="p">})</span>
 <span class="k">print</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">())</span>
